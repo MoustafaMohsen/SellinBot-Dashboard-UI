@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/sell-in-bot'),
+      dir: require('path').join(__dirname, './coverage/sellin-bot-angular'),
       subdir: '.',
       reporters: [
         { type: 'html' },

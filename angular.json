@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SellInBot": {
+    "SellinBot-Angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sell-in-bot",
+            "outputPath": "dist/sellin-bot-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "SellInBot:build:production"
+              "browserTarget": "SellinBot-Angular:build:production"
             },
             "development": {
-              "browserTarget": "SellInBot:build:development"
+              "browserTarget": "SellinBot-Angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SellInBot:build"
+            "browserTarget": "SellinBot-Angular:build"
           }
         },
         "test": {
@@ -107,5 +107,5 @@
       }
     }
   },
-  "defaultProject": "SellInBot"
+  "defaultProject": "SellinBot-Angular"
 }
