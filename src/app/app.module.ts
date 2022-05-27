@@ -1,29 +1,76 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-import { AppRoutingModule } from './app.routing';
-import { ComponentsModule } from './components/components.module';
-import { AppComponent } from './app.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+
+// layouts
+import { AdminComponent } from "./layouts/admin/admin.component";
+import { AuthComponent } from "./layouts/auth/auth.component";
+
+// admin views
+import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
+import { SettingsComponent } from "./views/admin/settings/settings.component";
+import { TablesComponent } from "./views/admin/tables/tables.component";
+import { OrdersComponent } from './views/admin/orders/orders.component';
+
+// auth views
+import { LoginComponent } from "./views/auth/login/login.component";
+import { RegisterComponent } from "./views/auth/register/register.component";
+
+// no layouts views
+import { IndexComponent } from "./views/index/index.component";
+import { LandingComponent } from "./views/landing/landing.component";
+import { ProfileComponent } from "./views/profile/profile.component";
+
+// components for views and layouts
+
+import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
+import { AuthNavbarComponent } from "./components/navbars/auth-navbar/auth-navbar.component";
+import { CardPageVisitsComponent } from "./components/cards/card-page-visits/card-page-visits.component";
+import { CardProfileComponent } from "./components/cards/card-profile/card-profile.component";
+import { CardSettingsComponent } from "./components/cards/card-settings/card-settings.component";
+import { CardStatsComponent } from "./components/cards/card-stats/card-stats.component";
+import { CardTableComponent } from "./components/cards/card-table/card-table.component";
+import { HeaderStatsComponent } from "./components/headers/header-stats/header-stats.component";
+import { IndexNavbarComponent } from "./components/navbars/index-navbar/index-navbar.component";
+import { TableDropdownComponent } from "./components/dropdowns/table-dropdown/table-dropdown.component";
+import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { OrdersTableComponent } from './components/cards/orders-table/orders-table.component';
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ComponentsModule,
-    RouterModule,
-    AppRoutingModule,
-  ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
-
+    DashboardComponent,
+    TableDropdownComponent,
+    NotificationDropdownComponent,
+    UserDropdownComponent,
+    SidebarComponent,
+    CardPageVisitsComponent,
+    CardProfileComponent,
+    CardSettingsComponent,
+    CardStatsComponent,
+    CardTableComponent,
+    HeaderStatsComponent,
+    AuthNavbarComponent,
+    AdminNavbarComponent,
+    IndexNavbarComponent,
+    AdminComponent,
+    AuthComponent,
+    SettingsComponent,
+    TablesComponent,
+    LoginComponent,
+    RegisterComponent,
+    IndexComponent,
+    LandingComponent,
+    ProfileComponent,
+    OrdersComponent,
+    OrdersTableComponent,
   ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
