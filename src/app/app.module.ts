@@ -28,8 +28,6 @@ import { ProfileComponent } from "./views/profile/profile.component";
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
 import { AuthNavbarComponent } from "./components/navbars/auth-navbar/auth-navbar.component";
 import { CardPageVisitsComponent } from "./components/cards/card-page-visits/card-page-visits.component";
-import { CardProfileComponent } from "./components/cards/card-profile/card-profile.component";
-import { CardSettingsComponent } from "./components/cards/card-settings/card-settings.component";
 import { CardStatsComponent } from "./components/cards/card-stats/card-stats.component";
 import { CardTableComponent } from "./components/cards/card-table/card-table.component";
 import { HeaderStatsComponent } from "./components/headers/header-stats/header-stats.component";
@@ -49,8 +47,6 @@ import { OrdersTableComponent } from './components/cards/orders-table/orders-tab
     UserDropdownComponent,
     SidebarComponent,
     CardPageVisitsComponent,
-    CardProfileComponent,
-    CardSettingsComponent,
     CardStatsComponent,
     CardTableComponent,
     HeaderStatsComponent,
