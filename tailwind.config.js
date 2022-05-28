@@ -1,17 +1,20 @@
+process.env.TAILWIND_MODE = 'watch';
+
 const plugin = require("tailwindcss/plugin");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
   purge: {
     enabled: true,
-    content: [
-      "./**/*.html",
-      "./*.html",
-      "./**/*.js",
-      "./*.js",
-      "./**/*.ts",
-      "./*.ts",
-    ],
+    // content: [
+    //   "./**/*.html",
+    //   "./*.html",
+    //   "./**/*.js",
+    //   "./*.js",
+    //   "./**/*.ts",
+    //   "./*.ts",
+    // ],
+    content: ['./src/**/*.{html,ts}'],
     options: {
       safelist: [],
     },
