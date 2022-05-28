@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from "@angular/core";
-
+import { ModalService } from "src/app/services/modal.service";
 @Component({
   selector: "app-card-table",
   templateUrl: "./card-table.component.html",
 })
 export class CardTableComponent implements OnInit {
+  collapseShow = "hidden";
   @Input()
   get color(): string {
     return this._color;
@@ -14,7 +15,17 @@ export class CardTableComponent implements OnInit {
   }
   private _color = "light";
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  constructor() { }
+  modal: ModalService;
+  ngAfterViewInit(): void {
+    this.modal = new ModalService(".open-convo-modal")
+  }
+  ngOnInit() { }
+  toggleCollapseShow(classes) {
+    this.collapseShow = classes;
+  }
 }
+
+
+
+
