@@ -1,6 +1,6 @@
 <div class="container mx-auto px-4 h-full">
-  <div class="flex content-center items-center justify-start h-full">
-    <div class="w-full lg:w-6/12 px-4 mt-8">
+  <div class="flex content-center items-center justify-center h-full">
+    <div class="w-full lg:w-6/12 px-4">
       <div  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0" >
         <div class="rounded-t mb-0 px-6 pt-6">
           <div class="text-center mb-3">
@@ -70,6 +70,13 @@
               </button>
             </div>
           </form>
+        </div>
+      </div>
+      <div class="flex justify-end mt-6 relative">
+        <div class="text-right">
+          <a [routerLink]="['/login']" class="text-blueGray-200">
+            <small>Already Have account?</small>
+          </a>
         </div>
       </div>
     </div>
