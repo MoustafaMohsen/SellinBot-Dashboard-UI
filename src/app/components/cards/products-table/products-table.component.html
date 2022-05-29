@@ -21,7 +21,7 @@
       <thead>
         <tr>
           <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-            Id 
+            Id
           </th>
           <th
             class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
@@ -51,34 +51,34 @@
           <th
             class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
           >
-         
+
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let p of products">
+          <!-- id -->
           <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left" >
-            <!-- id -->
-            1
+            {{p.products_id}}
           </th>
+          <!-- name -->
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <!-- name -->
-           water bottle
+            {{p.name}}
           </td>
+          <!-- description -->
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <!-- description -->
-            Lorem ipsum dolor sit
+            {{p.description}}
           </td>
+          <!-- img -->
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <!-- img -->
-           <img src="../../../../assets/img/product.jpg" class="w-16" alt="">
+           <img [src]="p.image_url? p.image_url : '../../../../assets/img/product.jpg'" class="w-16" alt="">
           </td>
+          <!-- price -->
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <!-- price -->
-           $20.00 USD
+           ${{p.price || 0}} USD
           </td>
+          <!-- visibility -->
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <!-- visibility -->
             <input type="checkbox" class="border border-gray-300 rounded-sm bg-white transition duration-200 cursor-pointer" />
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -87,13 +87,13 @@
            class="bg-lightBlue-600 text-white active:bg-lightBlue-600 text-xs font-bold px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
            type="button"
          >
-          Edit 
+          Edit
         </button>
           </td>
         </tr>
-      
-      
-        
+
+
+
       </tbody>
     </table>
   </div>
@@ -120,16 +120,30 @@
       </div>
       <!--Body-->
       <p>Modal content can go here</p>
-      <p>...</p>
-      <p>...</p>
-      <p>...</p>
-      <p>...</p>
+      <form  [formGroup]="newProduct" >
+
+        <!-- Name Field -->
+        <div class="mb-6">
+          <app-input-field label="Name" placeholder="Name" type="text" formControlName="name" ngDefaultControl></app-input-field>
+        </div>
+
+        <!-- Price Field -->
+        <div class="mb-6">
+          <app-input-field label="Price" placeholder="Price" type="number" formControlName="price" ngDefaultControl></app-input-field>
+        </div>
+
+        <!-- Description Field -->
+        <div class="mb-6">
+          <app-input-field label="Description" placeholder="Write Your Description Here ..." type="textarea" formControlName="description" ngDefaultControl></app-input-field>
+        </div>
+
+      </form>
 
       <!--Footer-->
       <div class="flex justify-end pt-2">
-        <button (click)="closeAddModal()"
+        <button (click)="modal.closeModal()"
           class="px-4 bg-transparent border-gray-800 text-gray-700 border-2 p-3 rounded-lg mr-2">Close</button>
-        <button 
+        <button (click)="createProduct()"
           class="sidebar-modal-close px-4 bg-lightBlue-600 p-3 rounded-lg text-white hover:bg-lightBlue-500">Add</button>
       </div>
 
@@ -166,14 +180,14 @@
       <!--Footer-->
       <div class="flex justify-between pt-2">
         <div class="">
-           <button 
+           <button
           class="sidebar-modal-close px-4 bg-red-400 p-3 rounded-lg text-white hover:bg-lightBlue-500">Delete</button>
         </div>
         <div>
-           <button (click)="closeEditModal()"
+           <button (click)="modal2.closeModal()"
           class="px-4 bg-transparent bg-gray-300 text-gray-700 p-3 rounded-lg mr-2">Close</button>
-       
-        <button 
+
+        <button
           class="sidebar-modal-close px-4 bg-lightBlue-600 p-3 rounded-lg text-white hover:bg-lightBlue-500">Add</button>
         </div>
       </div>
