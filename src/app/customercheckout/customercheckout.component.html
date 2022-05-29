@@ -1,0 +1,23 @@
+<div>
+  <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between py-2 navbar-expand-lg bg-lightBlue-900 shadow-lg border-b-4 border-lightBlue-400">
+    <div class="container mx-auto flex flex-wrap items-center justify-between">
+      <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+        <a [routerLink]="['/']"
+          class="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase">
+          <img src="assets/img/logo-withname-white-sm.png" style="height:35px;" alt="">
+        </a>
+        <button
+          class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+          type="button" (click)="setNavbarOpen()">
+          <i class="text-white fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <section class="relative w-full h-full py-40 min-h-screen">
+      <div class="absolute top-0 w-full h-full bg-no-repeat bg-full" style=""></div>
+      
+    </section>
+  </main>
+</div>
