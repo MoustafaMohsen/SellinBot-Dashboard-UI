@@ -35,6 +35,8 @@ import { BotcontrolTableComponent } from '../components/cards/botcontrol-table/b
 import { CustomercheckoutComponent } from '../customercheckout/customercheckout.component';
 import { CheckoutService } from "../services/payment/checkout.service";
 import { HttpClientModule } from '@angular/common/http';
+import { InputFieldComponent } from '../components/input-field/input-field.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -60,9 +62,16 @@ import { HttpClientModule } from '@angular/common/http';
     OrdersTableComponent,
     BotcontrolTableComponent,
     CustomercheckoutComponent,
+    InputFieldComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+  ],
   providers: [Api, CheckoutService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
