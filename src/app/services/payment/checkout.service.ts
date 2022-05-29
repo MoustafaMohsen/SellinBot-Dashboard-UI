@@ -18,38 +18,14 @@ export class CheckoutService {
       ewallet: "ewallet_f19f68e164acb188b8976a4a02a772cf"
     })
   }
-  isInited = false
   /**
-   * renders the checkout
-   * <div id="rapyd-checkout"></div>
+   * renders the checkout <div id="rapyd-checkout"></div>
    * @param success On success callback
    * @param loading On Loading callback
    * @param failure On failure callback
    */
-  renderCheckout(success?: (event: Event) => void, loading?: (event: Event) => void, failure?: (event: Event) => void) {
-
-    // init checkout script if it wasn't already
-    if(!this.isInited){
-      this.initCheckoutScript()
-    }
-    let checkout = new RapydCheckoutToolkit({
-      pay_button_text: "Click to pay",
-      // Text that appears on the 'Pay' button.
-      // String. Maximum length is 16 characters.
-      // Default is "Place Your Order". Optional.
-      pay_button_color: "blue",
-      // Color of the 'Pay' button. String.
-      // Standard CSS color name or hexadecimal code such as #323fff.
-      // Default is the color that is returned in the 'merchant_color'
-      // field of the response to 'Create Checkout Page'. Optional.
-      id: "checkout_693bac0ff263969b9f1814f510de37bf",
-      // ID of the 'Create Checkout Page' response. String. Required.
-      close_on_complete: true,
-      // Causes the embedded Rapyd Checkout Toolkit window to close
-      // when the payment is complete. Boolean. Default is 'true'. Optional.
-      page_type: "collection"
-      // Default is "collection". Optional.
-    });
+  renderCheckout(options:ICheckoutOptions,success?: (event: Event) => void, loading?: (event: Event) => void, failure?: (event: Event) => void) {
+    let checkout = new RapydCheckoutToolkit(options);
 
     checkout.displayCheckout();
 
@@ -62,13 +38,4 @@ export class CheckoutService {
   closeCheckout(checkout){
     checkout.closeCheckout();
   }
-
-  initCheckoutScript(): void {
-    let node = document.createElement('script');
-    node.src = "https://checkouttoolkit.rapyd.net";
-    node.type = 'text/javascript';
-    node.async = false;
-    document.getElementsByTagName('head')[0].appendChild(node);
-    this.isInited = true
- }
 }

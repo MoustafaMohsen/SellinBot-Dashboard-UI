@@ -1,3 +1,4 @@
+import { Api } from './../services/api/api.service';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
@@ -19,7 +20,6 @@ import { LoginComponent } from "../layouts/auth/login/login.component";
 import { RegisterComponent } from "../layouts/auth/register/register.component";
 
 // components for views and layouts
-
 import { AdminNavbarComponent } from "../components/navbars/admin-navbar/admin-navbar.component";
 import { AuthNavbarComponent } from "../components/navbars/auth-navbar/auth-navbar.component";
 import { ProductsTableComponent } from "../components/cards/products-table/products-table.component";
@@ -33,6 +33,8 @@ import { UserDropdownComponent } from "../components/dropdowns/user-dropdown/use
 import { OrdersTableComponent } from '../components/cards/orders-table/orders-table.component';
 import { BotcontrolTableComponent } from '../components/cards/botcontrol-table/botcontrol-table.component';
 import { CustomercheckoutComponent } from '../customercheckout/customercheckout.component';
+import { CheckoutService } from "../services/payment/checkout.service";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -59,8 +61,8 @@ import { CustomercheckoutComponent } from '../customercheckout/customercheckout.
     BotcontrolTableComponent,
     CustomercheckoutComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [Api, CheckoutService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
