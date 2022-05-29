@@ -1261,6 +1261,9 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgba(2, 132, 199, var(--tw-bg-opacity));
 }
+.bg-lightBlue-900 {
+  background-color:#004392;
+}
 
 .bg-teal-200 {
   --tw-bg-opacity: 1;
@@ -1483,7 +1486,9 @@ select {
   --tw-border-opacity: 1;
   border-color: rgba(185, 28, 28, var(--tw-border-opacity));
 }
-
+.border-lightBlue-400 {
+  border-color: rgb(56, 189, 248);
+}
 .border-gray-200 {
   --tw-border-opacity: 1;
   border-color: rgba(228, 228, 231, var(--tw-border-opacity));
@@ -1651,6 +1656,12 @@ select {
 
 .border-b-2 {
   border-bottom-width: 2px;
+}
+.border-b-3 {
+  border-bottom-width: 3px;
+}
+.border-b-4 {
+  border-bottom-width: 4px;
 }
 
 .border-t {
