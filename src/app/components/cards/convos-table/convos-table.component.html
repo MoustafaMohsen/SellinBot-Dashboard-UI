@@ -67,17 +67,17 @@
           >
             Source
           </th>
-         
-          <th class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" 
+
+          <th class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
           [ngClass]=" color === 'light'
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'">
-                
+
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let c of conversations">
           <!-- <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
             <img src="assets/img/bootstrap.jpg" class="h-12 w-12 bg-white rounded-full border" alt="..."/>
             <span class="ml-3 font-bold" [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'">
@@ -86,34 +86,33 @@
           </th> -->
           <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
             <!-- name -->
-             John Deo
+             {{c.meta?.customer_name}}
           </th>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             <!-- messages count -->
-           45
+           {{c.meta?.messages?.length}}
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
            <!-- have ordered -->
-           Yes
+           {{c.status == "Ordered"? "Yes" : "No"}}
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
              <!-- have paid -->
-            <i class="fas fa-circle text-orange-500 mr-2"></i> pending
+            <i *ngIf="c.status == 'Pending'" class="fas fa-circle text-orange-500 mr-2"></i>
+            {{c.status}}
+
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <img src="../../../../assets/img/whatsapp.png" class="h-6 w-6 bg-white rounded-full" alt="..."/>
-            <!-- <span class="ml-3 font-bold" [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'">
-              
-            </span> -->
+            <img  *ngIf="c.source == 'whatsapp'" src="../../../../assets/img/whatsapp.png" class="h-6 w-6 bg-white rounded-full" alt="..."/>
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <button (click)="modal.openModal()" class="bg-lightBlue-600 text-white active:bg-lightBlue-600 text-xs font-bold px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            <button (click)="viewConversation(c)" class="bg-lightBlue-600 text-white active:bg-lightBlue-600 text-xs font-bold px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
             type="button">
             View Convo
             </button>
           </td>
         </tr>
-      
+
       </tbody>
     </table>
   </div>
@@ -138,11 +137,7 @@
         </div>
       </div>
       <!--Body-->
-      <p>Modal content can go here</p>
-      <p>...</p>
-      <p>...</p>
-      <p>...</p>
-      <p>...</p>
+      <p *ngFor="let m of modal_conversation?.meta?.messages">{{m.sender}}: {{m.text}}</p>
 
       <!--Footer-->
       <div class="flex justify-end pt-2">
