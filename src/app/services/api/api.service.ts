@@ -1,6 +1,6 @@
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { IAPIServerResponse } from 'src/app/interfaces/api';
 
 @Injectable({
