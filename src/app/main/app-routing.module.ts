@@ -6,13 +6,17 @@ import { AdminComponent } from "../layouts/admin/admin.component";
 import { AuthComponent } from "../layouts/auth/auth.component";
 
 // admin views
-import { DashboardComponent } from "../layouts/admin/dashboard/dashboard.component";
-import { SettingsComponent } from "../layouts/admin/settings/settings.component";
-import { TablesComponent } from "../layouts/admin/tables/tables.component";
+import { ProductsComponent } from "../layouts/admin/products/products.component";
+import { BotcontrolComponent } from "../layouts/admin/botcontrol/botcontrol.component";
+import { ConvosComponent } from "../layouts/admin/convos/convos.component";
+import { OrdersComponent } from "../layouts/admin/orders/orders.component";
 
 // auth views
 import { LoginComponent } from "../layouts/auth/login/login.component";
 import { RegisterComponent } from "../layouts/auth/register/register.component";
+
+// customer checkout
+import { CustomercheckoutComponent } from "../customercheckout/customercheckout.component";
 
 const routes: Routes = [
   // admin views
@@ -20,10 +24,10 @@ const routes: Routes = [
     path: "admin",
     component: AdminComponent,
     children: [
-      { path: "products", component: DashboardComponent },
-      { path: "orders", component: SettingsComponent },
-      { path: "convos", component: TablesComponent },
-      { path: "botControl", component: TablesComponent },
+      { path: "products", component: ProductsComponent },
+      { path: "orders", component: OrdersComponent },
+      { path: "convos", component: ConvosComponent },
+      { path: "botControl", component: BotcontrolComponent },
       { path: "", redirectTo: "products", pathMatch: "full" },
     ],
   },
@@ -36,6 +40,11 @@ const routes: Routes = [
       { path: "register", component: RegisterComponent },
       { path: "", redirectTo: "login", pathMatch: "full" },
     ],
+  },
+  // customer checkout
+  {
+    path: "customercheckout",
+    component: CustomercheckoutComponent,
   },
   // no layout views
   { path: "**", redirectTo: "", pathMatch: "full" },
