@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ModalService } from "src/app/services/modal.service";
 @Component({
-  selector: "app-card-table",
-  templateUrl: "./card-table.component.html",
+  selector: "app-convos-table",
+  templateUrl: "./convos-table.component.html",
 })
-export class CardTableComponent implements OnInit {
+export class ConvosTableComponent implements OnInit {
   collapseShow = "hidden";
   @Input()
   get color(): string {

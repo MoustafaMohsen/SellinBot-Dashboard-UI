@@ -2,10 +2,10 @@ import { Component, OnInit , AfterViewInit } from "@angular/core";
 import { ModalService } from "src/app/services/modal.service";
 
 @Component({
-  selector: "app-card-page-visits",
-  templateUrl: "./card-page-visits.component.html",
+  selector: "app-products-table",
+  templateUrl: "./products-table.component.html",
 })
-export class CardPageVisitsComponent implements OnInit, AfterViewInit {
+export class ProductsTableComponent implements OnInit, AfterViewInit {
   collapseShow = "hidden";
 
   constructor() {}
