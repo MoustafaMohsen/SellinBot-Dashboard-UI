@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IOrder } from 'src/app/interfaces/order';
+import { DataService } from 'src/app/services/data/data.service';
 import { ModalService } from "src/app/services/modal.service";
 
 @Component({
@@ -15,10 +17,21 @@ export class OrdersTableComponent implements OnInit {
     this._color = color !== "light" && color !== "dark" ? "light" : color;
   }
   private _color = "light";
+  orders:IOrder[] = []
 
-  constructor() {}
+  constructor(private data: DataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.getOrders()
+  }
+
+  getOrders() {
+    this.data.getOrders().subscribe(r => {
+      this.orders = r.data
+      console.log(this.orders);
+
+    })
+  }
 
   modal:ModalService;
    ngAfterViewInit(): void {
@@ -31,6 +44,6 @@ export class OrdersTableComponent implements OnInit {
 
 }
 
- 
- 
- 
+
+
+

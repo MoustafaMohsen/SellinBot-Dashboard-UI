@@ -67,30 +67,30 @@
           >
             Amount
           </th>
-         
-          <th class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" 
+
+          <th class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
           [ngClass]=" color === 'light'
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'">
               Products
-                
+
           </th>
-          <th class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" 
+          <th class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
           [ngClass]=" color === 'light'
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'">
-                Status 
+                Status
           </th>
-          <th class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" 
+          <th class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
           [ngClass]=" color === 'light'
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'">
-              
+
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let o of orders">
           <!-- <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
             <img src="assets/img/bootstrap.jpg" class="h-12 w-12 bg-white rounded-full border" alt="..."/>
             <span class="ml-3 font-bold" [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'">
@@ -99,34 +99,34 @@
           </th> -->
           <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
             <!-- id -->
-             1
+             {{o.order_id}}
           </th>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             <!-- customer name -->
-           Jhon Deo
+           {{o.customer?.name}}
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
            <!-- Address -->
-           14257 Else Cove Apt. 775
+           {{o.address}}
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
              <!--phone number -->
-            +098 9878 9878
+            {{o.phone}}
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             <!-- amount -->
-            4
+            {{o.amount}}
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             <!-- products -->
-           Water Bottles
+           {{o.products}}
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             <!-- status -->
-           Shipped
+           {{o.status}}
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <button (click)="modal.openModal()()" class="bg-lightBlue-600 text-white active:bg-lightBlue-600 text-xs font-bold px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            <button (click)="modal.openModal()" class="bg-lightBlue-600 text-white active:bg-lightBlue-600 text-xs font-bold px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
             type="button">
             View Order
             </button>
@@ -162,9 +162,9 @@
 
       <!--Footer-->
       <div class="flex justify-end pt-2">
-        <button (click)="modal.closeModal()()"
+        <button (click)="modal.closeModal()"
           class="px-4 bg-transparent border-gray-800 text-gray-700 border-2 p-3 rounded-lg mr-2">Close</button>
-        <button 
+        <button
           class="px-4 bg-lightBlue-600 p-3 rounded-lg text-white hover:bg-lightBlue-500">Add</button>
       </div>
 
