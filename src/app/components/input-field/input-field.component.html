@@ -1,5 +1,5 @@
 <div [formGroup]="valueFormGroup" class="relative">
-  <label *ngIf="label" [for]="controlName+'_'+'type'" class="block mb-2 text-sm font-medium text-cyan-2">{{label}}</label>
+  <label *ngIf="label" [for]="controlName+'_'+'type'" class="block uppercase text-blueGray-600 text-xs font-bold mb-2">{{label}}</label>
   <div class="relative">
     <!-- If input -->
     <input
@@ -9,8 +9,10 @@
       [name]="controlName"
       [formControlName]="controlName"
       [autocomplete]="random"
-      class="shadow-lg text-gray-600 text-sm rounded-lg focus:ring-light-grey-700 focus:outline-none bg-light-1 block w-full p-2.5"
+      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
       [placeholder]="placeholder">
+
+
     <!-- If Textarea -->
     <textarea
       *ngIf="type == 'textarea'"
@@ -19,27 +21,9 @@
       [name]="controlName"
       [formControlName]="controlName"
       autocomplete="false"
-      class="shadow-lg text-gray-600 text-sm rounded-lg focus:ring-light-grey-700 focus:outline-none bg-light-1 block w-full p-2.5"
+      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
       [placeholder]="placeholder">
   </textarea>
-    <div class="fieldIcons">
-      <button class="inline-block" type="button" *ngIf="showReveal == true" (click)="revealPass()">
-        <div *ngIf="type === 'password'" class='revealDiv' [inlineSVG]="'/assets/icon/eye.svg'"></div>
-        <div *ngIf="type === 'text'" class='revealDiv' [inlineSVG]="'/assets/icon/eye-off.svg'"></div>
-      </button>
 
-      <button class="inline-block" type="button" *ngIf="showCopy == true" (click)="copyToCLipboard()">
-        <div class='copyDiv' [inlineSVG]="'/assets/icon/copy.svg'"></div>
-      </button>
-
-      <button class="inline-block" type="button" *ngIf="showGen == true" (click)="genpassword()">
-        <div class='revealDiv' [inlineSVG]="'/assets/icon/sidebar/refresh.svg'"></div>
-      </button>
-
-    </div>
   </div>
-
-
-  <div *ngIf="subtext" class="mt-1 text-xs text-light-grey-400" id="user_avatar_help">{{subtext}}</div>
-  <span>{{message}}</span>
 </div>
