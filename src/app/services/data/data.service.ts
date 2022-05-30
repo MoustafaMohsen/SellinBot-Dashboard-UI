@@ -1,3 +1,4 @@
+import { IUserObject } from './../../interfaces/idbcontact';
 import { Api } from './../api/api.service';
 import { HelperService } from 'src/app/services/util/helper';
 import { IProduct } from 'src/app/interfaces/product';
@@ -10,11 +11,14 @@ import { IConversation } from 'src/app/interfaces/conversation';
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private api: Api) { }
+  constructor(private api: Api) {
+    this.loadUser();
+  }
 
   readonlymode = false;
   products: IProduct[] = [];
   orders: IOrder[] = [];
+  user: IUserObject = {} as any;
   conversations: IConversation[] = [];
 
   getProducts() {
@@ -26,6 +30,14 @@ export class DataService {
 
   createProduct(product: IProduct) {
     return this.api.post<IProduct[]>("products/create", product)
+  }
+
+  updateProduct(product: IProduct) {
+    return this.api.post<IProduct[]>("products/update", product)
+  }
+
+  deleteProduct(product: IProduct) {
+    return this.api.post<IProduct[]>("products/delete", product)
   }
 
   getOrders() {
@@ -50,5 +62,42 @@ export class DataService {
     return this.api.post<IConversation[]>("conversations/create", conversation)
   }
 
+  login(user:{email:string; password_hash:string}){
+    let paymentUrl = this.api.paymentUrl;
+    return this.api.post<IUserObject>(paymentUrl+"/user/get", user).pipe(tap((ps)=>{
+      console.log("getConversations pipe", ps);
+      this.user = ps?.data || {} as any
+      this.saveUserToStorage(this.user)
+    }))
+  }
+  logout(){
+    this.user = {}
+    localStorage.removeItem("user")
+  }
+
+  saveUserToStorage(user:IUserObject){
+      localStorage.setItem("user", JSON.stringify(user))
+  }
+
+  getUserFromStorage():IUserObject{
+      let user = localStorage.getItem("user")
+      if (user) {
+        let parseduser:IUserObject = JSON.parse(user)
+        return parseduser;
+      }
+      return null;
+  }
+
+  loadUser(){
+    let user = this.getUserFromStorage()
+    if (user) {
+      this.user = user
+    }
+  }
+  isAuthenticated(){
+    console.log("isAuthenticated",this.user.id);
+
+    return this.user.id?true:false;
+  }
 }
 

@@ -19,12 +19,21 @@ export class ProductsTableComponent implements OnInit, AfterViewInit {
       image_url: [''],
       file: [''],
     });
+    this.productForm = fb.group({
+      name: [''],
+      description: [''],
+      price: [''],
+      image_url: [''],
+      file: [''],
+    });
   }
   newProduct: FormGroup
+  productForm: FormGroup
   products:IProduct[] = []
-
+  currentProduct:IProduct
   modal: ModalService;
   modal2: ModalService;
+  text=""
 
   ngOnInit(): void {
     this.getProducts()
@@ -49,6 +58,10 @@ export class ProductsTableComponent implements OnInit, AfterViewInit {
 
   createProduct() {
     if (this.newProduct.invalid) {
+      this.text = "Invalid inputs"
+      setTimeout(() => {
+        this.text = ""
+      }, 10000);
       return;
     }
     let product:IProduct = {
@@ -58,6 +71,46 @@ export class ProductsTableComponent implements OnInit, AfterViewInit {
     }
     this.data.createProduct(product).subscribe(r => {
       console.log(r);
+    })
+  }
+
+  viewProduct(p:IProduct){
+    this.currentProduct = p
+    this.productForm.get("name").setValue(p.name)
+    this.productForm.get("price").setValue(p.price)
+    this.productForm.get("description").setValue(p.description)
+    this.modal2.openModal()
+  }
+  editProduct() {
+    if (this.productForm.invalid) {
+      this.text = "Invalid inputs"
+      setTimeout(() => {
+        this.text = ""
+      }, 10000);
+      return;
+    }
+    let name = this.productForm.get("name").value
+    let description = this.productForm.get("description").value
+    let price = this.productForm.get("price").value
+    let file = this.productForm.get("file").value
+    let product:IProduct = {}
+    if(name) product.name = name
+    if(description) product.description = description
+    if(price) product.price = price
+    product.products_id = this.currentProduct?.products_id
+    this.data.updateProduct(product).subscribe(r => {
+      console.log(r);
+      this.getProducts();
+      this.modal2.closeModal();
+    })
+  }
+  deleteProduct(){
+    let product:IProduct = {}
+    product.products_id = this.currentProduct?.products_id
+    this.data.deleteProduct(product).subscribe(r => {
+      console.log(r);
+      this.getProducts();
+      this.modal2.closeModal();
     })
   }
 }

@@ -17,12 +17,14 @@ import { RegisterComponent } from "../layouts/auth/register/register.component";
 
 // customer checkout
 import { CustomercheckoutComponent } from "../customercheckout/customercheckout.component";
+import { AuthGuard } from "../auth/auth.guard";
 
 const routes: Routes = [
   // admin views
   {
-    path: "admin",
+    path: "merchant",
     component: AdminComponent,
+    canActivate:[AuthGuard],
     children: [
       { path: "products", component: ProductsComponent },
       { path: "orders", component: OrdersComponent },

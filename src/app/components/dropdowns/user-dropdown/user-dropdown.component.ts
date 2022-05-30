@@ -1,3 +1,4 @@
+import { DataService } from 'src/app/services/data/data.service';
 import { Component, AfterViewInit, ViewChild, ElementRef } from "@angular/core";
 import { createPopper } from "@popperjs/core";
 
@@ -6,6 +7,7 @@ import { createPopper } from "@popperjs/core";
   templateUrl: "./user-dropdown.component.html",
 })
 export class UserDropdownComponent implements AfterViewInit {
+  constructor(private data:DataService){}
   dropdownPopoverShow = false;
   @ViewChild("btnDropdownRef", { static: false }) btnDropdownRef: ElementRef;
   @ViewChild("popoverDropdownRef", { static: false })
@@ -26,5 +28,8 @@ export class UserDropdownComponent implements AfterViewInit {
     } else {
       this.dropdownPopoverShow = true;
     }
+  }
+  logout(){
+    this.data.logout()
   }
 }

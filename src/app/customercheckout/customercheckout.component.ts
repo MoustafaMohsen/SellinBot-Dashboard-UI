@@ -1,6 +1,5 @@
 import { ICheckoutOptions } from 'src/app/interfaces/checkout';
 import { Component, OnInit } from '@angular/core';
-import { CheckoutService } from '../services/payment/checkout.service';
 import { ActivatedRoute } from '@angular/router';
 declare var RapydCheckoutToolkit:new (options:ICheckoutOptions)=>any
 
@@ -13,12 +12,12 @@ export class CustomercheckoutComponent implements OnInit {
 
 
   navbarOpen = false
-  constructor(private checkoutService: CheckoutService, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { }
   checkout_id: string = ""
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     // this.checkout_id = routeParams.get('checkout_id');
-    this.checkout_id = "checkout_720bdfa4e8076bd46397c0884f640eb4"
+    this.checkout_id = "checkout_dab57d2fdd15213e36ace05a3c96ef8a"
     setTimeout(() => {
       this.renderCheckout()
     }, 50);
@@ -61,8 +60,6 @@ export class CustomercheckoutComponent implements OnInit {
     window.addEventListener("onLoading", function (event:any) {
       console.log(event.detail.error);
     });
-    this.checkoutService.renderCheckout(options)
-
   }
 
 }

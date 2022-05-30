@@ -20,8 +20,8 @@ export class ConvosTableComponent implements OnInit {
     this._color = color !== "light" && color !== "dark" ? "light" : color;
   }
   private _color = "light";
-  conversations:IConversation[] = []
-  modal_conversation:IConversation
+  conversations: IConversation[] = []
+  modal_conversation: IConversation
   getConversations() {
     this.data.getConversations().subscribe(r => {
       this.conversations = r.data
@@ -31,8 +31,10 @@ export class ConvosTableComponent implements OnInit {
   }
 
 
-  viewConversation(c){
+  viewConversation(c) {
     this.modal_conversation = c;
+    console.log("viewConversation(c)", this.modal_conversation?.meta?.messages);
+
     this.modal.openModal()
   }
   modal: ModalService;

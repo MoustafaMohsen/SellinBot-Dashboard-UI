@@ -37,6 +37,7 @@ import { CheckoutService } from "../services/payment/checkout.service";
 import { HttpClientModule } from '@angular/common/http';
 import { InputFieldComponent } from '../components/input-field/input-field.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from '../auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [Api, CheckoutService],
+  providers: [Api, CheckoutService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
