@@ -16,8 +16,8 @@ export class CustomercheckoutComponent implements OnInit {
   checkout_id: string = ""
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    // this.checkout_id = routeParams.get('checkout_id');
-    this.checkout_id = "checkout_dab57d2fdd15213e36ace05a3c96ef8a"
+    this.checkout_id = routeParams.get('checkout_id');
+    // this.checkout_id = "checkout_dab57d2fdd15213e36ace05a3c96ef8a"
     setTimeout(() => {
       this.renderCheckout()
     }, 50);
@@ -50,10 +50,14 @@ export class CustomercheckoutComponent implements OnInit {
     const checkout = new RapydCheckoutToolkit(options);
     checkout.displayCheckout();
 
+
     window.addEventListener("onCheckoutPaymentSuccess", function (event:any) {
+      window.location = event.detail.complete_payment_url
       console.log(event.detail);
+      checkout.closeCheckout();
     });
     window.addEventListener("onCheckoutFailure", function (event:any) {
+      window.location = event.detail.error_payment_url
       console.log(event.detail.error);
       checkout.closeCheckout();
     });

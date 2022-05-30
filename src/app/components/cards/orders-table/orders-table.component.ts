@@ -69,6 +69,11 @@ export class OrdersTableComponent implements OnInit {
       }, 10000);
     }
   }
+  orderTotal(order: IOrder) {
+    let total = 0
+    order?.meta?.products?.forEach((a)=>{total = total + parseInt(a.price)})
+    return total
+}
 }
 
 

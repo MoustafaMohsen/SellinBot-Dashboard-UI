@@ -6,10 +6,10 @@
       <div class="flex flex-wrap">
         <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
           <app-card-stats
-            statSubtitle="TRAFFIC"
-            statTitle="350,897"
+            statSubtitle="Revenue"
+            [statTitle]="revenue"
             statArrow="up"
-            statPercent="3.48"
+            statPercent="100"
             statPercentColor="text-emerald-500"
             statDescripiron="Since last month"
             statIconName="far fa-chart-bar"
@@ -18,8 +18,8 @@
         </div>
         <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
           <app-card-stats
-            statSubtitle="NEW USERS"
-            statTitle="2,356"
+            statSubtitle="Orders"
+            [statTitle]="orders"
             statArrow="down"
             statPercent="3.48"
             statPercentColor="text-red-500"
@@ -30,8 +30,8 @@
         </div>
         <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
           <app-card-stats
-            statSubtitle="SALES"
-            statTitle="924"
+            statSubtitle="Customers"
+            [statTitle]="customers"
             statArrow="down"
             statPercent="1.10"
             statPercentColor="text-orange-500"
@@ -42,8 +42,8 @@
         </div>
         <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
           <app-card-stats
-            statSubtitle="PERFORMANCE"
-            statTitle="49,65%"
+            statSubtitle="Products"
+            [statTitle]="products"
             statArrow="up"
             statPercent="12"
             statPercentColor="text-emerald-500"
