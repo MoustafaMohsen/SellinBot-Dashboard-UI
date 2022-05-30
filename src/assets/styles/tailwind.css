@@ -4183,3 +4183,8 @@ select {
 
 @media (min-width: 1536px) {
 }
+
+.text-lightBlue-700 {
+    --tw-text-opacity: 1;
+    color: rgba(3, 105, 161, var(--tw-text-opacity));
+}
