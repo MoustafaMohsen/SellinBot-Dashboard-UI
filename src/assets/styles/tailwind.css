@@ -1498,6 +1498,10 @@ select {
   --tw-border-opacity: 1;
   border-color: rgba(212, 212, 216, var(--tw-border-opacity));
 }
+.border-lightBlue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(2, 132, 199, var(--tw-bg-opacity));
+}
 
 .border-blueGray-50 {
   --tw-border-opacity: 1;
