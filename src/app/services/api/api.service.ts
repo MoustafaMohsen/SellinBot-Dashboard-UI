@@ -7,7 +7,7 @@ import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
   providedIn: 'root'
 })
 export class Api {
-  url: string = 'http://localhost:3005';
+  url: string = 'http://192.168.1.4:3005';
 
   constructor(public http: HttpClient) {
     if (environment.production) {
