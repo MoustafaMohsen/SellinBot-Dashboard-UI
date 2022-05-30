@@ -17,14 +17,12 @@ export class ProductsTableComponent implements OnInit, AfterViewInit {
       description: [''],
       price: ['', Validators.required],
       image_url: [''],
-      file: [''],
     });
     this.productForm = fb.group({
       name: [''],
       description: [''],
       price: [''],
       image_url: [''],
-      file: [''],
     });
   }
   newProduct: FormGroup
@@ -79,6 +77,7 @@ export class ProductsTableComponent implements OnInit, AfterViewInit {
     this.productForm.get("name").setValue(p.name)
     this.productForm.get("price").setValue(p.price)
     this.productForm.get("description").setValue(p.description)
+    if(p.image_url)this.productForm.get("image_url").setValue(p.image_url)
     this.modal2.openModal()
   }
   editProduct() {
@@ -92,13 +91,17 @@ export class ProductsTableComponent implements OnInit, AfterViewInit {
     let name = this.productForm.get("name").value
     let description = this.productForm.get("description").value
     let price = this.productForm.get("price").value
-    let file = this.productForm.get("file").value
-    let product:IProduct = {}
-    if(name) product.name = name
-    if(description) product.description = description
-    if(price) product.price = price
-    product.products_id = this.currentProduct?.products_id
-    this.data.updateProduct(product).subscribe(r => {
+    let image_url = this.productForm.get("image_url").value
+    let new_product:IProduct = {}
+    if(name) new_product.name = name
+    if(description) new_product.description = description
+    if(image_url) new_product.image_url = image_url
+    if(price) new_product.price = price
+    new_product.products_id = this.currentProduct?.products_id
+    let old_product = {
+      products_id:new_product.products_id
+    }
+    this.data.updateProduct({new_product,old_product}).subscribe(r => {
       console.log(r);
       this.getProducts();
       this.modal2.closeModal();

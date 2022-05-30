@@ -22,7 +22,7 @@ export class DataService {
   conversations: IConversation[] = [];
 
   getProducts() {
-    return this.api.post<IProduct[]>("products/get-all", null).pipe(tap((ps)=>{
+    return this.api.post<IProduct[]>("products/get-all", null).pipe(tap((ps) => {
       console.log("getProducts pipe", ps);
       this.products = ps?.data || []
     }))
@@ -32,7 +32,10 @@ export class DataService {
     return this.api.post<IProduct[]>("products/create", product)
   }
 
-  updateProduct(product: IProduct) {
+  updateProduct(product: {
+    new_product: IProduct,
+    old_product: IProduct
+  }) {
     return this.api.post<IProduct[]>("products/update", product)
   }
 
@@ -41,7 +44,7 @@ export class DataService {
   }
 
   getOrders() {
-    return this.api.post<IOrder[]>("orders/get-all", null).pipe(tap((ps)=>{
+    return this.api.post<IOrder[]>("orders/get-all", null).pipe(tap((ps) => {
       console.log("getOrders pipe", ps);
       this.orders = ps?.data || []
     }))
@@ -52,7 +55,7 @@ export class DataService {
   }
 
   getConversations() {
-    return this.api.post<IConversation[]>("conversations/get-all", null).pipe(tap((ps)=>{
+    return this.api.post<IConversation[]>("conversations/get-all", null).pipe(tap((ps) => {
       console.log("getConversations pipe", ps);
       this.conversations = ps?.data || []
     }))
@@ -62,42 +65,42 @@ export class DataService {
     return this.api.post<IConversation[]>("conversations/create", conversation)
   }
 
-  login(user:{email:string; password_hash:string}){
+  login(user: { email: string; password_hash: string }) {
     let paymentUrl = this.api.paymentUrl;
-    return this.api.post<IUserObject>(paymentUrl+"/user/get", user).pipe(tap((ps)=>{
+    return this.api.post<IUserObject>(paymentUrl + "/user/get", user).pipe(tap((ps) => {
       console.log("getConversations pipe", ps);
       this.user = ps?.data || {} as any
       this.saveUserToStorage(this.user)
     }))
   }
-  logout(){
+  logout() {
     this.user = {}
     localStorage.removeItem("user")
   }
 
-  saveUserToStorage(user:IUserObject){
-      localStorage.setItem("user", JSON.stringify(user))
+  saveUserToStorage(user: IUserObject) {
+    localStorage.setItem("user", JSON.stringify(user))
   }
 
-  getUserFromStorage():IUserObject{
-      let user = localStorage.getItem("user")
-      if (user) {
-        let parseduser:IUserObject = JSON.parse(user)
-        return parseduser;
-      }
-      return null;
+  getUserFromStorage(): IUserObject {
+    let user = localStorage.getItem("user")
+    if (user) {
+      let parseduser: IUserObject = JSON.parse(user)
+      return parseduser;
+    }
+    return null;
   }
 
-  loadUser(){
+  loadUser() {
     let user = this.getUserFromStorage()
     if (user) {
       this.user = user
     }
   }
-  isAuthenticated(){
-    console.log("isAuthenticated",this.user.id);
+  isAuthenticated() {
+    console.log("isAuthenticated", this.user.id);
 
-    return this.user.id?true:false;
+    return this.user.id ? true : false;
   }
 }
 

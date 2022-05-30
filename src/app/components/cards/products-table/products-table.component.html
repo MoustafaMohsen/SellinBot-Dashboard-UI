@@ -42,15 +42,15 @@
           >
             Price
           </th>
-          <th
+          <!-- <th
             class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
           >
           Visibility
-          </th>
+          </th> -->
           <th
             class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
           >
-
+          View/Edit
           </th>
         </tr>
       </thead>
@@ -77,16 +77,16 @@
            ${{p.price || 0}} USD
           </td>
           <!-- visibility -->
-          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+          <!-- <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             <input type="checkbox" class="border border-gray-300 rounded-sm bg-white transition duration-200 cursor-pointer" />
-          </td>
+          </td> -->
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
            <!-- edit button -->
            <button  (click)="viewProduct(p)"
            class="bg-lightBlue-600 text-white active:bg-lightBlue-600 text-xs font-bold px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
            type="button"
          >
-          Edit
+          View/Edit
         </button>
           </td>
         </tr>
@@ -137,7 +137,9 @@
 
         <!-- image field -->
         <div class="mb-6">
-          <input class="form-control block font-normal bg-clip-padding  border-solid border-gray-300 m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:ring w-full ease-linear transition-all duration-150" type="file" id="formFile">
+          <!-- <input class="form-control block font-normal bg-clip-padding  border-solid border-gray-300 m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:ring w-full ease-linear transition-all duration-150" type="file" id="formFile"> -->
+          <app-input-field label="Image url" placeholder="Past the Image url here" type="url" formControlName="image_url" ngDefaultControl></app-input-field>
+
         </div>
 
       </form>
@@ -193,7 +195,9 @@
 
         <!-- image field -->
         <div class="mb-6">
-          <input class="form-control block font-normal bg-clip-padding  border-solid border-gray-300 m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:ring w-full ease-linear transition-all duration-150" type="file" id="formFile">
+          <!-- <input class="form-control block font-normal bg-clip-padding  border-solid border-gray-300 m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:ring w-full ease-linear transition-all duration-150" type="file" id="formFile"> -->
+          <app-input-field label="Product Image url" placeholder="Past the Image url here" type="url" formControlName="image_url" ngDefaultControl></app-input-field>
+
         </div>
 
       </form>

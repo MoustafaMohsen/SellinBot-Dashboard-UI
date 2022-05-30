@@ -20,9 +20,10 @@ export class HeaderStatsComponent implements OnInit {
       this.orders = this.data.orders.length
       this.products = this.data.products.length
       let temp = {}
-      this.data.conversations.forEach(c=>{
+      for (let i = 0; i < this.data.conversations.length; i++) {
+        const c = this.data.conversations[i];
         temp[c.customer_id] = 1
-      })
+      }
       this.customers = Object.keys(temp)?.length;
 
     },2000)

@@ -25,7 +25,7 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-            Name
+            Customer ID
           </th>
           <th
             class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
@@ -55,16 +55,6 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-            Have Paid
-          </th>
-          <th
-            class="px-6 align-middle border border-solid py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-            [ngClass]="
-              color === 'light'
-                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                : 'bg-red-800 text-red-300 border-red-700'
-            "
-          >
             Source
           </th>
 
@@ -72,7 +62,7 @@
           [ngClass]=" color === 'light'
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'">
-
+          View full Conversation
           </th>
         </tr>
       </thead>
@@ -86,7 +76,7 @@
           </th> -->
           <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
             <!-- name -->
-             {{c.meta?.customer_name}}
+             {{c?.customer_id}}
           </th>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             <!-- messages count -->
@@ -97,13 +87,8 @@
            {{c.status == "Ordered"? "Yes" : "No"}}
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-             <!-- have paid -->
-            <i *ngIf="c.status == 'Pending'" class="fas fa-circle text-orange-500 mr-2"></i>
-            {{c.status}}
-
-          </td>
-          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <img  *ngIf="c.source == 'whatsapp'" src="../../../../assets/img/whatsapp.png" class="h-6 w-6 bg-white rounded-full" alt="..."/>
+            <img  *ngIf="c?.source == 'whatsapp'" src="../../../../assets/img/whatsapp.png" class="h-6 w-6 bg-white rounded-full" alt="..."/>
+            <img  src="../../../../assets/img/messenger.png" class="h-6 w-6 bg-white rounded-full" alt="..."/>
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
             <button (click)="viewConversation(c)" class="bg-lightBlue-600 text-white active:bg-lightBlue-600 text-xs font-bold px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
