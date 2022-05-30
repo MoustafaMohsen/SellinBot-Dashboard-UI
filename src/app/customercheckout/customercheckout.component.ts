@@ -1,6 +1,8 @@
 import { ICheckoutOptions } from 'src/app/interfaces/checkout';
 import { Component, OnInit } from '@angular/core';
 import { CheckoutService } from '../services/payment/checkout.service';
+import { ActivatedRoute } from '@angular/router';
+declare var RapydCheckoutToolkit:new (options:ICheckoutOptions)=>any
 
 @Component({
   selector: 'app-customercheckout',
@@ -9,13 +11,25 @@ import { CheckoutService } from '../services/payment/checkout.service';
 })
 export class CustomercheckoutComponent implements OnInit {
 
-  constructor(private checkoutService: CheckoutService) { }
 
+  navbarOpen = false
+  constructor(private checkoutService: CheckoutService, private route: ActivatedRoute) { }
+  checkout_id: string = ""
   ngOnInit(): void {
+    const routeParams = this.route.snapshot.paramMap;
+    // this.checkout_id = routeParams.get('checkout_id');
+    this.checkout_id = "checkout_720bdfa4e8076bd46397c0884f640eb4"
+    setTimeout(() => {
+      this.renderCheckout()
+    }, 50);
+
   }
 
   renderCheckout() {
-    let options:ICheckoutOptions = {
+    if (!this.checkout_id) {
+      return
+    }
+    let options: ICheckoutOptions = {
       pay_button_text: "Click to pay",
       // Text that appears on the 'Pay' button.
       // String. Maximum length is 16 characters.
@@ -25,7 +39,7 @@ export class CustomercheckoutComponent implements OnInit {
       // Standard CSS color name or hexadecimal code such as #323fff.
       // Default is the color that is returned in the 'merchant_color'
       // field of the response to 'Create Checkout Page'. Optional.
-      id: "checkout_693bac0ff263969b9f1814f510de37bf",
+      id: this.checkout_id,
       // ID of the 'Create Checkout Page' response. String. Required.
       close_on_complete: true,
       // Causes the embedded Rapyd Checkout Toolkit window to close
@@ -33,7 +47,22 @@ export class CustomercheckoutComponent implements OnInit {
       page_type: "collection"
       // Default is "collection". Optional.
     }
+
+    const checkout = new RapydCheckoutToolkit(options);
+    checkout.displayCheckout();
+
+    window.addEventListener("onCheckoutPaymentSuccess", function (event:any) {
+      console.log(event.detail);
+    });
+    window.addEventListener("onCheckoutFailure", function (event:any) {
+      console.log(event.detail.error);
+      checkout.closeCheckout();
+    });
+    window.addEventListener("onLoading", function (event:any) {
+      console.log(event.detail.error);
+    });
     this.checkoutService.renderCheckout(options)
+
   }
 
 }

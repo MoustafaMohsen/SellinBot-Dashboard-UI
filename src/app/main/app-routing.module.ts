@@ -43,7 +43,7 @@ const routes: Routes = [
   },
   // customer checkout
   {
-    path: "customercheckout",
+    path: "customer/checkout/:checkout_id",
     component: CustomercheckoutComponent,
   },
   // no layout views
